@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import WebcamCapture from './Components/WebcamCapture';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Initial set up</h1>
+    <div className="app">
+      <h1> Initial set up</h1>
+      <WebcamCapture />
     </div>
   );
 }
