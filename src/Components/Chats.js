@@ -24,6 +24,7 @@ function Chats() {
    
 
     useEffect(() => {
+      
        db.collection('posts')
        .orderBy('timestamp', 'desc')
        .onSnapshot((snapshot) =>
