@@ -40,22 +40,31 @@ function App() {
         {!user ? (
           <Login />
         ): (
+          <>
+          <img 
+          src="https://img.etimg.com/thumb/width-640,height-480,imgsize-131476,resizemode-1,msid-76333036/magazines/panache/snapchat-to-add-wellness-features-on-the-app-will-help-users-deal-with-stress-anxiety-and-emotional-issues/snap-said-it-was-working-to-curb-the-stress-and-anxiety-which-plagues-social-networks-which-offer-a-platform-for-user-content-.jpg"
+          alt=""
+          className="app__logo"
+          />
           <div className='app__body'>
-            <Switch>
-              <Route path="/chats/view">
-                  <ChatView />
-              </Route>
-              <Route path="/chats">
-                  <Chats />
-              </Route>
-              <Route path="/preview">
-                <Preview />
-              </Route>
-              <Route exact path="/">
-                <WebcamCapture />
-              </Route>
-            </Switch>
+            <div className="app__bodyBackground">
+              <Switch>
+                <Route path="/chats/view">
+                    <ChatView />
+                </Route>
+                <Route path="/chats">
+                    <Chats />
+                </Route>
+                <Route path="/preview">
+                  <Preview />
+                </Route>
+                <Route exact path="/">
+                  <WebcamCapture />
+                </Route>
+              </Switch>
+            </div>
           </div>
+          </>
         )}
 
       </Router>

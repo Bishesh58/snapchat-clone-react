@@ -26,6 +26,7 @@ function Preview() {
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
+    console.log(user);
 
     useEffect(() => {
         if(!cameraImage){
@@ -52,7 +53,7 @@ function Preview() {
             .then((url) =>{
                db.collection('posts').add({
                    imageUrl: url,
-                   username: 'Bishesh',
+                   username: user.username,
                    read: false,
                    profilePic: user.profilePic,
                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
