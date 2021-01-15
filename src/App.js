@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Preview from './Components/Preview';
 import Chats from './Components/Chats';
+import ChatView from './Components/ChatView';
 
 function App() {
   return (
@@ -15,9 +16,12 @@ function App() {
       <Router>
         <div className='app__body'>
           <Switch>
+          <Route path="/chats/view">
+                <ChatView />
+            </Route>
             <Route path="/chats">
                 <Chats />
-              </Route>
+            </Route>
             <Route path="/preview">
               <Preview />
             </Route>

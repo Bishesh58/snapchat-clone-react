@@ -1,9 +1,47 @@
-import React from 'react'
+import { Avatar } from '@material-ui/core';
+import React from 'react';
+import './Chat.css';
+import StopRoundedIcon from '@material-ui/icons/StopRounded';
+import ReactTimeago from 'react-timeago';
+import { selectedImage } from '../features/appSlice';
+import { useDispatch } from 'react-redux';
+import { db } from '../firebase';
+import { useHistory } from 'react-router-dom';
 
-function Chat() {
+
+function Chat({id, username, timestamp, read, imageUrl, profilePic }) {
+
+    const dispatch = useDispatch();
+    const history = useHistory()
+    const open = () =>{
+
+        //if image not viewed, remove read icon & redirect to view
+        if(!read){
+            dispatch(selectedImage(imageUrl));
+            db.collection('posts').doc(id).set(
+                {
+                    read: true,
+                },
+                {merge: true }
+            );
+            
+           
+            history.push('/chats/view')
+        }
+    }
     return (
-        <div className='chat'>
-            <h2>hello from chat components</h2>
+        <div onClick={open} className='chat'>
+            <Avatar className='chat__avatar' src={profilePic} />
+            <div className="chat__info">
+                <h4>{username}</h4>
+                <p>
+                    {!read && 'Tap to View - '}{" "}
+                    <ReactTimeago date = {new Date( timestamp?.toDate()).toUTCString()} />
+                    </p>
+            </div>
+
+            {/* showing red status */}
+            {!read && <StopRoundedIcon className='chat__readIcon'/>}
         </div>
     )
 }
