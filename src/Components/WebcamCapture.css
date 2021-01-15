@@ -6,7 +6,9 @@
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 125%);
     cursor: pointer;
-    color: white;
+    color: gray;
+    background: white;
+    border-radius: 200px;
 }
